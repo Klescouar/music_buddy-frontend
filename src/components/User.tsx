@@ -1,4 +1,5 @@
 "use client";
+import { Item } from "@/types/Spotify";
 import { getRandomIndex } from "@/utils/array";
 import { fetchJson } from "@/utils/fetch";
 import { extractTopArtistImageUrls } from "@/utils/user";
@@ -15,7 +16,7 @@ export const User = () => {
     if (!session || hasFetchedTopArtists.current) return;
 
     const fetchUser = async () => {
-      const data = await fetchJson(
+      const data: { items: Item[] } = await fetchJson(
         "https://api.spotify.com/v1/me/top/artists",
         {
           headers: {
