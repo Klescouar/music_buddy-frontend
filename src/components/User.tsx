@@ -6,6 +6,7 @@ import { extractTopArtistImageUrls } from "@/utils/user";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import profilePic from "../../public/profile.jpg";
 
 export const User = () => {
   const { data: session } = useSession();
@@ -34,11 +35,8 @@ export const User = () => {
     <div className="flex items-center space-x-4 p-2 mb-5">
       <Image
         className="rounded-full"
-        src={
-          topArtistImages?.[getRandomIndex(topArtistImages)] ||
-          "http://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp"
-        }
-        alt="James Bhatta"
+        src={topArtistImages?.[getRandomIndex(topArtistImages)] || profilePic}
+        alt="User profile"
         width={50}
         height={50}
       />
@@ -55,9 +53,9 @@ export const User = () => {
             stroke="currentColor"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
             />
           </svg>

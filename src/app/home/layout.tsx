@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { AuthProvider } from "./AuthProvider";
-import "./globals.css";
 import { Josefin_Sans } from "next/font/google";
+import { NavBar } from "@/components/NavBar";
 
 export const metadata: Metadata = {
   title: "Music Suggestions",
@@ -16,14 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <AuthProvider>
-      <html lang="en">
-        <body className={`h-screen ${josefin.className}`}>
-          <div className="flex items-center justify-center bg-gray-100 w-full h-full">
-            {children}
-          </div>
-        </body>
-      </html>
-    </AuthProvider>
+    <>
+      <NavBar />
+      <div className="flex-1 h-full overflow-y-scroll">{children}</div>
+    </>
   );
 }
